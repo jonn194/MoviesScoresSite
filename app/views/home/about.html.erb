@@ -1,2 +1,24 @@
-<h1>Home#about</h1>
-<p>This project was created by Juan Martin Salice</p>
+<div class="container py-4">
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">About Me</h1>
+            <p class="col-md-8 fs-4">Hello! My name is Juan Salice, and I am a game developer.<br>
+            I made this project as a way to practice ruby on rails.<br>
+            To see my other projects please visit the following links.
+            </p>           
+
+            <hr>
+
+            <%= link_to 'https://github.com/jonn194', class: "btn btn-primary btn-lg" do %>
+                <i class="bi bi-github"></i>
+                Github
+            <%end%>
+
+            <%= link_to 'https://play.google.com/store/apps/dev?id=9100874252988767847', class: "btn btn-primary btn-lg" do %>
+                <i class="bi bi-google-play"></i>
+                Google Play
+            <%end%>
+            <!--button class="btn btn-primary btn-lg" type="button">Github</button-->
+        </div>
+    </div>
+</div>
