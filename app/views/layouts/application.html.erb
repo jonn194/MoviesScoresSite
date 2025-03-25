@@ -12,10 +12,10 @@
 
   </head>
   <body>
-    
+    <%= stylesheet_link_tag "application" %>
     <br>
+    <%= render 'layouts/alerts'%>
     <% if notice %>
-      <%= render 'layouts/alerts'%>
     <% end %>
     <br>
 

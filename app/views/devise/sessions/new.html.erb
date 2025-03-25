@@ -1,17 +1,17 @@
 <div class="container px-4">
   <div class="row gx-5">
     <div class="col">
-      <div class="card">
-        <h2 class="card-header">Log in</h2>
+      <div class="card bg-dark">
+        <h2 class="card-header" style = "color: white">Log in</h2>
         <div class="card-body">
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             
-            <div class="field form-group">
+            <div class="field form-group" style = "color: white">
               <%= f.label :email, class:"form-label"%>
               <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
             </div>
             <br>
-            <div class="field form-group">
+            <div class="field form-group" style = "color: white">
               <%= f.label :password, class:"form-label" %><br />
               <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
             </div>
@@ -19,7 +19,7 @@
             <br>
 
             <% if devise_mapping.rememberable? %>
-              <div class="form-check form-switch">
+              <div class="form-check form-switch" style = "color: white">
                 <%= f.check_box :remember_me, class:"form-check-input", type:"checkbox", role:"switch", id:"flexSwitchCheckDefault"  %>
                 <%= f.label :remember_me %>
               </div>
