@@ -1,17 +1,6 @@
 <%= form_for @movie do |f|%>
-    <!--%= f.hidden_field :user_id, value: current_user.id %-->
-    <div class="form-group">
-        <% if @movie.errors.any? %>
-            <div id="error_explanation">
-                <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
-                <ul>
-                    <% @movie.errors.full_messages.each do |message| %>
-                        <li><%= message %></li>
-                    <% end %>
-                </ul>
-            </div>
-        <% end %>
-    </div>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= render "movies/error_messages" %>
     <div class="field form-group" style = "color: white">
         <%= f.text_field :title, placeholder: "Title", class:"form-control"%>
     </div>
@@ -36,7 +25,16 @@
         <%= f.text_field :rating, placeholder: "Rating", class:"form-control" %>
     </div>
     <br>
+    <div class="mb-3" style = "color: white">
+        <%= f.label "Cover", class:"form-label"%>
+        <%= f.file_field :image, class:"form-control"%>
+    </div>
+    <br>
     <div class="actions">
-        <%= f.submit class:"btn btn-primary"%>
+        <% if :image != "" %>
+            <%= f.submit class:"btn btn-primary" %>
+        <% else %>
+            <button type="button" class="btn btn-primary" disabled><%= f.submit %></button>
+        <% end %>
     </div>
 <% end %>

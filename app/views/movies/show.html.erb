@@ -1,26 +1,60 @@
-<p style = "color: white">
-    <strong>Title:</strong>
-    <%= @movie.title %>
-</p>
-<p style = "color: white">
-    <strong>Description:</strong>
-    <%= @movie.description %>
-</p>
-<p style = "color: white">
-    <strong>Director:</strong>
-    <%= @movie.director %>
-</p>
-<p style = "color: white">
-    <strong>Genre:</strong>
-    <%= @movie.genre %>
-</p>
-<p style = "color: white">
-    <strong>Movie length:</strong>
-    <%= @movie.movie_length %>
-</p>
-<p style = "color: white">
-    <strong>Rating:</strong>
-    <%= @movie.rating %>
-</p>
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
+<div class="container py-4">
+    <div class="p-5 mb-4 bg-dark rounded-3">
+        <div class="container-fluid py-5">
+            <div class="row align-items-start">
+                <div class="col">
+                    <h2 style = "color: white"> <strong> <%= @movie.title %> </strong> </h2>
+                    <br>
+                    <p style = "color: white"> <strong>Description:</strong> </p>
+                    <div class="card">
+                        <div class="card-body bg-dark">
+                            <p style = "color: white"> <%= @movie.description %> </p>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card bg-dark">
+                        <p style = "color: white">
+                            <strong>Director:</strong>
+                            <%= @movie.director %>
+                        </p>
+                        <p style = "color: white">
+                            <strong>Genre:</strong>
+                            <%= @movie.genre %>
+                        </p>
+                        <p style = "color: white">
+                            <strong>Movie length:</strong>
+                            <%= @movie.movie_length %>
+                        </p>
+                        <p style = "color: white">
+                            <strong>Rating:</strong>
+                            <%= @movie.rating %> / 10
+                        </p>
+                    </div>
+
+                    <%= link_to 'Edit', edit_movie_path(@movie) %>
+                </div>
+                <div class="col">
+                    <%= image_tag(@movie.image) %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container px-4">
+  <div class="row gx-5">
+    <div class="col">
+      <div class="card bg-dark">
+        <h3 class="card-header" style = "color: white">Reviews</h3>
+        <div class="card-body">
+            <h4 style = "color: white">Reviews placeholder</h4>
+            <p style = "color: white">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

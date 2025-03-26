@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
-  # before_action :set_movie, only: [ :show, :edit, :update, :destroy ]
-  # before_action :autenticate_user!, except: [ :index ]
+  before_action :set_movie, only: [ :show, :edit, :update, :destroy ]
+  before_action :authenticate_user!, except: [ :index ]
   def index
     @movies = Movie.all
   end
@@ -17,11 +17,15 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.new(movie_params)
-
-    if @movie.save
-      redirect_to @movie, notice: "Movie was successfully created"
-    else
+    if movie_params[:image].blank?
+      @movie.errors.add(:base, "Please upload an image")
       render :new
+    else
+      if @movie.save
+        redirect_to @movie, notice: "Movie was successfully created"
+      else
+        render :new
+      end
     end
   end
 

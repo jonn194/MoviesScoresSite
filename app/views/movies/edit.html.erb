@@ -1,5 +1,21 @@
-<h1 style = "color: white">Editing movie</h1>
-<%= render 'form' %>
-<%= link_to 'Home Page', movies_path %> |
-<%= link_to 'Back', @movie %> |
-<%= link_to "Delete", movie_path(@movie), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
+
+
+<div class="container py-4">
+    <div class="p-5 mb-4 bg-dark rounded-3">
+        <div class="container-fluid py-5">
+            <h1 style = "color: white">Editing movie</h1>
+            <%= render 'form' %>
+            <br>
+            <%= link_to 'Cancel', @movie, class:"btn btn-secondary" %>
+            <br>
+            <br>
+            <div class="card">
+                <div class="card-body bg-dark">
+                    <h3 style = "color: white">Delete Movie</h3>
+                    <p style = "color: white">Do you wish to delete this movie permanently?</p> 
+                    <%= button_to "Delete Movie", movie_path(@movie), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn btn-danger" %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

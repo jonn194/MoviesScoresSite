@@ -2,31 +2,25 @@
     <div class="p-5 mb-4 bg-dark rounded-3">
         <div class="container-fluid py-5">
             <h1 style = "color: white">Movies Index</h1>
-            <table>
+            <table class="table table-sm w-auto">
                 <thead>
                     <tr style = "color: white">Movies Index>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Director</th>
-                        <th>Genre</th>
-                        <th>Movie length</th>
-                        <th>Rating</th>
-                        <th colspan="3"></th>
+                        <th colspan="5"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <% @movies.each do |movie| %>
-                    <tr>
-                    <td><%= movie.title %></td>
-                    <td><%= movie.description %></td>
-                    <td><%= movie.director %></td>
-                    <td><%= movie.genre %></td>
-                    <td><%= movie.movie_length %></td>
-                    <td><%= movie.rating %></td>
-                    <td><%= link_to 'Show', movie %></td>
-                    <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-                    <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                    </tr>
+                        <tr>
+                            <td><%= link_to image_tag(movie.image, style:"width:100px; height:100px"), movie %></td>
+                            <td style="width:100px; height:100px"> </td>
+                            <td style = "color: white">
+                                <h4 style = "color: white"> <%= movie.title %> </h4>
+                                <br>
+                                <strong>Rating: </strong>
+                                <%= movie.rating %>
+                            </td>
+                            <td style="width:800px; height:100px"> </td>
+                        </tr>
                     <% end %>
                 </tbody>
             </table>
