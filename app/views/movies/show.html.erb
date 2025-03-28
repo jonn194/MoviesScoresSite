@@ -46,15 +46,44 @@
       <div class="card bg-dark">
         <h3 class="card-header" style = "color: white">Reviews</h3>
         <div class="card-body">
-            <h4 style = "color: white">Reviews placeholder</h4>
-            <p style = "color: white">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+            <% if @reviews.blank? %>
+                <h4 style = "color: white">No Reviews Yet</h4>
+                <br>
+            <% else %>
+                <% @reviews.each do |r| %>
+                    <% if current_user.id == r.user_id%>
+                        <% break %>
+                    <% end %>
+                    <% if r == @reviews.last() %>
+                        <%= link_to 'Write a review', new_movie_review_path(@movie), class:"btn btn-warning btn-lg" %>
+                        <br>
+                        <br>
+                    <% end %>
+                <% end %>
+                <% @reviews.each do |r| %>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Review By: <%= r.user_id %> </h4>
+                            <a>
+                            <% if current_user.id == r.user_id %>
+                                <%= link_to "Edit review", edit_movie_review_path(@movie, r)%>
+                            <% end %>
+                            </a>
+                        </div>
+                        <div class="card-body bg-dark">
+                            <blockquote class="blockquote mb-0" style="color: white">
+                            <h5>Rating: <%= r.rating %> / 10 </h5>
+                            <p><%= r.comment %></p>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <br>
+                <% end %>
+            <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
+<br>
+<br>

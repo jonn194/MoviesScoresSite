@@ -1,7 +1,7 @@
 <div class="container py-4">
     <div class="p-5 mb-4 bg-dark rounded-3">
         <div class="container-fluid py-5">
-            <h1 style = "color: white">Editing movie</h1>
+            <h1 style = "color: white">New Review</h1>
             <%= render 'form' %>
             <br>
             <%= link_to 'Cancel', @movie, class:"btn btn-secondary" %>
@@ -9,9 +9,9 @@
             <br>
             <div class="card">
                 <div class="card-body bg-dark">
-                    <h3 style = "color: white">Delete Movie</h3>
-                    <p style = "color: white">Do you wish to delete this movie permanently?</p> 
-                    <%= button_to "Delete Movie", movie_path(@movie), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn btn-danger" %>
+                    <h3 style = "color: white">Delete Review</h3>
+                    <p style = "color: white">Do you wish to delete this review permanently?</p> 
+                    <%= button_to "Delete Review", movie_review_path(@movie, @review), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn btn-danger" %>
                 </div>
             </div>
         </div>

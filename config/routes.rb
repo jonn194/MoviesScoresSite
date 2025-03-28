@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :movies
-  resources :reviews
+
+  resources :movies do
+    resources :reviews, except: [ :index ]
+  end
+
   root "home#index"
   get "home/about"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

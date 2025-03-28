@@ -31,10 +31,6 @@
     </div>
     <br>
     <div class="actions">
-        <% if :image != "" %>
-            <%= f.submit class:"btn btn-primary" %>
-        <% else %>
-            <button type="button" class="btn btn-primary" disabled><%= f.submit %></button>
-        <% end %>
+        <%= f.submit class:"btn btn-primary" %>
     </div>
 <% end %>
