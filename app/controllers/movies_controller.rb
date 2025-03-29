@@ -1,8 +1,13 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [ :show, :edit, :update, :destroy ]
-  before_action :authenticate_user!, except: [ :index ]
+  before_action :authenticate_user!, except: [ :index, :show ]
+
+  def search
+  end
+
   def index
-    @movies = Movie.all
+    # @movies = Movie.all
+    @movies = Movie.search_by_title(params[:search])
   end
   def show
     @movies = Movie.find(params[:id])
@@ -48,6 +53,6 @@ class MoviesController < ApplicationController
   end
 
   def movie_params
-    params.require(:movie).permit(:title, :description, :director, :genre, :movie_length, :rating, :user_id, :image)
+    params.require(:movie).permit(:title, :description, :director, :genre, :movie_length, :rating, :user_id, :image, :search)
   end
 end

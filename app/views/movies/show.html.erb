@@ -30,8 +30,9 @@
                             <%= @movie.rating %> / 10
                         </p>
                     </div>
-
-                    <%= link_to 'Edit', edit_movie_path(@movie) %>
+                    <% if user_signed_in? %>
+                        <%= link_to 'Edit', edit_movie_path(@movie) %>
+                    <% end %>
                 </div>
                 <div class="col">
                     <%= image_tag(@movie.image, style:"width:600px; height:847px") %>
@@ -50,23 +51,27 @@
                 <h4 style = "color: white">No Reviews Yet</h4>
                 <br>
             <% else %>
-                <% @reviews.each do |r| %>
-                    <% if current_user.id == r.user_id%>
-                        <% break %>
+                <% if user_signed_in? %>
+                    <% @reviews.each do |r| %>
+                        <% if current_user.id == r.user_id%>
+                            <% break %>
+                        <% end %>
+                        <% if r == @reviews.last() %>
+                            <%= link_to 'Write a review', new_movie_review_path(@movie), class:"btn btn-warning btn-lg" %>
+                            <br>
+                            <br>
+                        <% end %>
                     <% end %>
-                    <% if r == @reviews.last() %>
-                        <%= link_to 'Write a review', new_movie_review_path(@movie), class:"btn btn-warning btn-lg" %>
-                        <br>
-                        <br>
-                    <% end %>
-                <% end %>
+                <% end%>
                 <% @reviews.each do |r| %>
                     <div class="card">
                         <div class="card-header">
                             <h4>Review By: <%= r.user_id %> </h4>
                             <a>
-                            <% if current_user.id == r.user_id %>
-                                <%= link_to "Edit review", edit_movie_review_path(@movie, r)%>
+                            <% if user_signed_in? %>
+                                <% if current_user.id == r.user_id %>
+                                    <%= link_to "Edit review", edit_movie_review_path(@movie, r)%>
+                                <% end %>
                             <% end %>
                             </a>
                         </div>
