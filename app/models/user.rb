@@ -7,4 +7,11 @@ class User < ApplicationRecord
   has_many :movies
   has_many :reviews
   has_many :movies, through: :reviews, dependent: :destroy
+  has_one :profile, dependent: :destroy
+
+  after_create :init_profile
+
+  def init_profile
+    self.create_profile!
+  end
 end

@@ -1,0 +1,20 @@
+<div class="container py-4">
+    <div class="p-5 mb-4 bg-dark rounded-3">
+        <div class="container-fluid py-5">
+            <div class="row align-items-start">
+                <div class="col">
+                    <h1 class="display-5 fw-bold" style = "color: white"><%= @profile.username %></h1>
+                    <p class="col-md-8 fs-4" style = "color: white"><strong>Favourite Movie:</strong> <%= @profile.favourite_movie%></p>
+                    <br>
+                    <p class="col-md-8 fs-4" style = "color: white"><strong>Favourite Genre:</strong> <%= @profile.favourite_genre%></p>
+                </div>
+                <div class="col">
+                    <%= image_tag(@profile.image, style:"width:200px; height:200px") unless @profile.image.blank? %>
+                </div>
+                <% if user_signed_in? %>
+                    <%= link_to 'Edit', edit_profile_path(@profile) %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
