@@ -22,10 +22,7 @@
         <%= f.text_field :movie_length, class:"form-control", step:"0.01", value:"01.00", type:"number", id:"typeNumber" %>
     </div>
     <br>
-    <div class="mb-3" style = "color: white">
-        <%= f.label "Cover", class:"form-label"%>
-        <%= f.file_field :image, class:"form-control"%>
-    </div>
+    <%= render "cover_preview", form: f, movie: @movie%>
     <br>
     <div class="actions">
         <%= f.submit class:"btn btn-primary" %>

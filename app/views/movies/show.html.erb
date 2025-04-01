@@ -35,7 +35,7 @@
                     <% end %>
                 </div>
                 <div class="col">
-                    <%= image_tag(@movie.image, style:"width:600px; height:847px") %>
+                    <%= image_tag(@movie.image, class: "image-cover") if @movie.image.present? %>
                 </div>
             </div>
         </div>

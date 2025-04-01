@@ -1,0 +1,19 @@
+<div data-controller = "previews">
+    <label class="form-label" for="typeNumber" style = "color: white">Movie Cover</label>
+    <div class="container text-center">
+        <div class="row align-items-start">
+            <div class="col">
+                <%= form.file_field :image, direct_upload: true, data: { previews_target: "input", action: "change->previews#preview"}, class:"form-control" %>
+            </div>
+            <div class="col">
+                <div class= "image-cover-preview">
+                <% if movie.image.attached?%>
+                    <%= image_tag movie.image, data: { previews_target: "preview"}, class: "image-cover-preview" %>
+                <% else %>
+                    <%= image_tag asset_path("Cover_Preview.png"), data: { previews_target: "preview"}, class: "image-cover-preview" %>
+                <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
