@@ -33,3 +33,17 @@
   width: 300px;
   height: 423px;
  }
+
+ .main-link {
+  color: white
+ }
+
+ .rating-good{
+  color: green
+ }
+ .rating-mid{
+  color: gold
+ }
+ .rating-bad{
+  color: crimson
+ }

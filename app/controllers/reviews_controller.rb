@@ -40,7 +40,9 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @review.update(review_params)
+    if @review.update(review_params)
+      redirect_to @movie, notice: "Review updated successfully"
+    end
   end
 
   def destroy

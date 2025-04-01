@@ -5,10 +5,29 @@ class MoviesController < ApplicationController
   def index
     # @movies = Movie.all
     @movies = Movie.search_by_title(params[:search])
+
+    @movies.each do |m|
+      unless m.reviews.blank?
+        tempRating = 0
+        m.reviews.each do |r|
+          tempRating += r.rating
+        end
+        m.rating = tempRating/m.reviews.size
+      end
+    end
   end
   def show
-    @movies = Movie.find(params[:id])
+    @movie = Movie.find(params[:id])
     @reviews = Review.where(movie_id: @movie.id).order("created_at DESC")
+    @users = User.all
+
+    unless @reviews.blank?
+      tempRating = 0
+      @reviews.each do |r|
+        tempRating += r.rating
+      end
+      @movie.rating = tempRating/@reviews.size
+    end
   end
 
   def new

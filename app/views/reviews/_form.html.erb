@@ -5,7 +5,8 @@
     </div>
     <br>
     <div class="field form-group" style = "color: white">
-        <%= f.text_field :rating, placeholder: "Rating", class:"form-control" %>
+        <label class="form-label" for="typeNumber">Rating</label>
+        <%= f.text_field :rating, value:"10", type:"number", id:"typeNumber", step:"1", min:"0", max:"10", class:"form-control" %>
     </div>
     <br>
     <div class="actions">

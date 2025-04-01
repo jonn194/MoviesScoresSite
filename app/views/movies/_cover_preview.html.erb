@@ -7,10 +7,10 @@
             </div>
             <div class="col">
                 <div class= "image-cover-preview">
-                <% if movie.image.attached?%>
+                <% if movie.image.attached? && movie.image.persisted?%>
                     <%= image_tag movie.image, data: { previews_target: "preview"}, class: "image-cover-preview" %>
                 <% else %>
-                    <%= image_tag asset_path("Cover_Preview.png"), data: { previews_target: "preview"}, class: "image-cover-preview" %>
+                    <%= image_tag "", data: { previews_target: "preview"}, class: "image-cover-preview" %>
                 <% end %>
                 </div>
             </div>

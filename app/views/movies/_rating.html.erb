@@ -1,0 +1,16 @@
+<% if movie.rating > 7 %>
+<div style = "color:green">
+<% elsif movie.rating < 5 %>
+<div style = "color:red">
+<% else %>
+<div style = "color:gold">
+<%end%>
+<h4>
+<% unless movie.rating == -1 %>
+<strong><%= movie.rating %> / 10</strong>
+<% else %>
+- 
+<% end %>
+</h4>
+<h5><strong>Rating</strong></h5>
+</div>

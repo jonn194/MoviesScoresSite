@@ -1,4 +1,4 @@
-<%= form_for @movie do |f|%>
+<%= form_with model: @movie do |f|%>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.hidden_field :rating, value: -1%>
     <%= render "movies/error_messages" %>
@@ -22,7 +22,10 @@
         <%= f.text_field :movie_length, class:"form-control", step:"0.01", value:"01.00", type:"number", id:"typeNumber" %>
     </div>
     <br>
-    <%= render "cover_preview", form: f, movie: @movie%>
+    <div class="mb-3" style = "color: white">
+        <%= f.label "Movie Cover", class:"form-label"%>
+        <%= f.file_field :image, accept:'image/*', class:"form-control"%>
+    </div>
     <br>
     <div class="actions">
         <%= f.submit class:"btn btn-primary" %>

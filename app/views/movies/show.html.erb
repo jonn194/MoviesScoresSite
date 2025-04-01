@@ -24,11 +24,9 @@
                         <p style = "color: white">
                             <strong>Movie length:</strong>
                             <%= @movie.movie_length %>
+                            hrs.
                         </p>
-                        <p style = "color: white">
-                            <strong>Rating:</strong>
-                            <%= @movie.rating %> / 10
-                        </p>
+                        <%= render "rating", movie: @movie%>
                     </div>
                     <% if user_signed_in? %>
                         <%= link_to 'Edit', edit_movie_path(@movie) %>
@@ -41,54 +39,6 @@
         </div>
     </div>
 </div>
-<div class="container px-4">
-  <div class="row gx-5">
-    <div class="col">
-      <div class="card bg-dark">
-        <h3 class="card-header" style = "color: white">Reviews</h3>
-        <div class="card-body">
-            <% if @reviews.blank? %>
-                <h4 style = "color: white">No Reviews Yet</h4>
-                <br>
-            <% else %>
-                <% if user_signed_in? %>
-                    <% @reviews.each do |r| %>
-                        <% if current_user.id == r.user_id%>
-                            <% break %>
-                        <% end %>
-                        <% if r == @reviews.last() %>
-                            <%= link_to 'Write a review', new_movie_review_path(@movie), class:"btn btn-warning btn-lg" %>
-                            <br>
-                            <br>
-                        <% end %>
-                    <% end %>
-                <% end%>
-                <% @reviews.each do |r| %>
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Review By: <%= r.user_id %> </h4>
-                            <a>
-                            <% if user_signed_in? %>
-                                <% if current_user.id == r.user_id %>
-                                    <%= link_to "Edit review", edit_movie_review_path(@movie, r)%>
-                                <% end %>
-                            <% end %>
-                            </a>
-                        </div>
-                        <div class="card-body bg-dark">
-                            <blockquote class="blockquote mb-0" style="color: white">
-                            <h5>Rating: <%= r.rating %> / 10 </h5>
-                            <p><%= r.comment %></p>
-                            </blockquote>
-                        </div>
-                    </div>
-                    <br>
-                <% end %>
-            <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+    <%= render "list_reviews" %>
 <br>
 <br>
